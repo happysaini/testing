@@ -112,15 +112,18 @@ Migration Utility is designed in such a manner that it works in two phases/steps
 
 ### **Phase-4: Manually Add Attachments** <a name="phase-4"></a>
   - **Introduction** <a name="phase-4-introduction"></a><br/>
-    In this phase/step, utility will migrate Test Runs, Test Plans and Test Results data from old server/cloud to new server/cloud.
+    In this phase/step, user have to manually add attachments on the new TestRail server/cloud
 
   - **Manual Steps** <a name="execution-step-phase-4"></a>
-  Below is the command that needs to be executed to read the bug's required data from JSON to import the issues in GitHub .We need to give flag `--import_issues` along with one required arguments `--project_key`.
+      - **Step 1** Get all the attachments from old TestRail server
+      - **Step 2** Add attachments at below mention locations
+          - Attachments in test cases
+              - Manually add attachments in expected results,preconditions etc (A* attachments)
+              - Add attachments in attachments fields(B* Attachments)
+          - Attachments in Test Results
+              - Locate Test Results having attachments in comment body and add attachments to them(A* attachments) (Have a comment_attachment.json)
+              - Take attachments_ids_mapping.json and execute python add_attachment_to_results.py(B* Attachments)
+              
+#**Note** Where A* attachments are meraly the jpeg or any image format attachments that are dropped in expected results , actual result or comment body of test results.
+And B* attachments are added in the attachment field of test cases and test results
 
-  ```
-  python testrail_migration_server_to_cloud.py --migrate_test_runs --source_testrail_project_name <PROJECT_NAME> --destination_testrail_project_name <NEW_PROJECT_NAME> --source_testrail_test_suites <TEST_SUITE_NAME> --source_testrail_test_suites <TEST_SUITE_NAME>
-  ```
-  Example:
-  ```
-  python testrail_migration_server_to_cloud.py --migrate_test_runs --source_testrail_project_name "Sensor Management Platform" --destination_testrail_project_name "Sensor Management Platform" --source_testrail_test_suites "DCO Endpoints" --source_testrail_test_suites "DCO Endpoints Manual Tests Suite" --source_testrail_test_suites "SMP - API Test Suite" --source_testrail_test_suites "SMP - UI - Test Suite"
-  ```
