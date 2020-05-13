@@ -42,7 +42,7 @@ The file directory structure is show below:
     └──config.json
 └── testrail_migration
     ├── ___init__.py
-	├── testrail.py
+    ├── testrail.py
     ├── testrail_migration_server_to_cloud.py
     └── utils.py
 ├── requirements.txt
@@ -81,8 +81,16 @@ Migration Utility is designed in such a manner that it works in two phases/steps
     In this phase/step, we have to manually export test cases from old TestRail server/cloud and then import them in new TestRail server/cloud after making some important changes in the file. Below are the steps that have to be performed:
 
   - **Manual Steps** <a name="execution-step-phase-2"></a>
- 
-
+      - **Step 1** Export Test Suites data in XML
+      - **Step 2** Update Priority and Remove old Attachments referance from XML using the python script
+          ```Execute Command :   python ressolve_priority.py```
+      - **Step 3** Manually add or update customization on new TestRail server/cloud
+           - Create test cases fields on new server as per the test case fields on old server
+           - Create results fields
+           - Add created_date a string result fields
+           - Add case type smoke in customization
+           - Add status field named skip in customization(Make sure to set the field active)
+      - **Step 4** Import Suites fron XML file new server
 
 ### **Phase-3: Migrate Test Runs and Test Plans** <a name="phase-3"></a>
   - **Introduction** <a name="phase-3-introduction"></a><br/>
@@ -98,7 +106,9 @@ Migration Utility is designed in such a manner that it works in two phases/steps
   ```
   python testrail_migration_server_to_cloud.py --migrate_test_runs --source_testrail_project_name "Sensor Management Platform" --destination_testrail_project_name "Sensor Management Platform" --source_testrail_test_suites "DCO Endpoints" --source_testrail_test_suites "DCO Endpoints Manual Tests Suite" --source_testrail_test_suites "SMP - API Test Suite" --source_testrail_test_suites "SMP - UI - Test Suite"
   ```
-
+**Note** Few important changes have to be made in the script before executing command in the phase-3
+    - Set date : date variable in testrail_migration_server_to_cloud.py file by default set to 2019, 04, 01 have to be updated as per the requirement of historical data.
+    - Set migrating_user_id : migrating_user_id in utils.py file have to be set as not all assignedto_id from test runs, test plans or test results would be existing or properly mapped.
 
 ### **Phase-4: Manually Add Attachments** <a name="phase-4"></a>
   - **Introduction** <a name="phase-4-introduction"></a><br/>
