@@ -24,7 +24,7 @@ pipeline {
 		stage('execute shell') {
             steps {
 				script{
-					def statuscode = sh script:"script/hello.sh", returnStatus:true
+					def statuscode = sh script:"Test Pipeline/script/hello.sh", returnStatus:true
 					echo statuscode
 				}
             }
