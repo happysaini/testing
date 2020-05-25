@@ -23,11 +23,11 @@ pipeline {
         }
 		stage('execute shell') {
             steps {
-			    dir("../" + JOB_NAME + "@script") {
+			    dir("../" + JOB_NAME + "/script") {
 					script{
 						def data = "hello"
 						println data
-						sh "pwd"
+						sh "hello.sh"
 						
 					}
 				}
