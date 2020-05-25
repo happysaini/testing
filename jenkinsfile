@@ -26,6 +26,7 @@ pipeline {
 			    dir("../" + JOB_NAME + "@script") {
 					script{
 						def data = "hello"
+						println data
 					}
 				}
             }
