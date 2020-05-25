@@ -24,7 +24,8 @@ pipeline {
 		stage('execute shell') {
             steps {
 				script{
-					sh script:"script/hello.sh"
+
+					echo "hello world"
 				}
             }
         }
