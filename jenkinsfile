@@ -24,8 +24,8 @@ pipeline {
 		stage('execute shell') {
             steps {
 				script{
-
-					echo "hello world"
+					def statuscode = sh script:"script/hello.sh", returnStatus:true
+					echo statuscode
 				}
             }
         }
