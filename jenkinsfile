@@ -16,5 +16,10 @@ pipeline {
                 echo 'Testing'
             }
         }
+		stage('Example Test') {
+            steps {
+                bat 'python hello.py' 
+            }
+        }
     }
 }
