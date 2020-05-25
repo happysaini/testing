@@ -21,9 +21,14 @@ pipeline {
                 bat 'dir' 
             }
         }
-		stage('execute python') {
+		stage('execute shell') {
             steps {
-                echo "bat python hello.py"
+				script{
+					def statuscode = "hello"
+					def data = "world"
+					data
+					statuscode
+				}
             }
         }
     }
