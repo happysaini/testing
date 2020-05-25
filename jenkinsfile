@@ -27,7 +27,6 @@ pipeline {
 					script{
 						def data = 0
 						echo data					
-						}
 					}
 				}
             }
