@@ -18,7 +18,7 @@ pipeline {
         }
 		stage('Print From Python File') {
             steps {
-                bat 'python hello.py' 
+                bat 'dir' 
             }
         }
     }
