@@ -27,6 +27,7 @@ pipeline {
 					script{
 						def data = "hello"
 						println data
+						sh "pwd"
 						
 					}
 				}
