@@ -25,7 +25,7 @@ pipeline {
             steps {
 			    dir("../" + JOB_NAME + "@script") {
 					script{
-					    def statuscode = sh script:"script/hello.sh", returnStatus:true
+					    def statuscode = sh script:"hello.sh", returnStatus:true
 						def data = "hello"
 						println data
 						println statuscode
