@@ -25,8 +25,7 @@ pipeline {
             steps {
 			    dir("../" + JOB_NAME + "@script") {
 					script{
-						def data = 0
-						echo data					
+						echo "hello"
 					}
 				}
             }
