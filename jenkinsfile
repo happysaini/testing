@@ -24,8 +24,11 @@ pipeline {
 		stage('execute shell') {
             steps {
 				script{
-					def statuscode = sh script:"Test Pipeline/script/hello.sh", returnStatus:true
-					echo statuscode
+				    def data = 0
+                    echo data					
+					if(data != 0){
+					    sh "exit 1"
+					}
 				}
             }
         }
