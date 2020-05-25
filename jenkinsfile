@@ -16,7 +16,7 @@ pipeline {
                 echo 'Testing'
             }
         }
-		stage('Example Test') {
+		stage('Print From Python File') {
             steps {
                 bat 'python hello.py' 
             }
