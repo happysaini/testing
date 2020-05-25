@@ -24,10 +24,7 @@ pipeline {
 		stage('execute shell') {
             steps {
 				script{
-					def statuscode = "hello"
-					def data = "world"
-					data
-					statuscode
+					sh script:"script/hello.sh"
 				}
             }
         }
