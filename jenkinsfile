@@ -16,9 +16,14 @@ pipeline {
                 echo 'Testing'
             }
         }
-		stage('Print From Python File') {
+		stage('listing') {
             steps {
                 bat 'dir' 
+            }
+        }
+		stage('execute python') {
+            steps {
+                echo "bat python hello.py"
             }
         }
     }
