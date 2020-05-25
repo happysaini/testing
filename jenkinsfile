@@ -23,11 +23,13 @@ pipeline {
         }
 		stage('execute shell') {
             steps {
-				script{
-				    def data = 0
-                    echo data					
-					if(data != 0){
-					    sh "exit 1"
+			    dir("../" + JOB_NAME + "@script") {
+					script{
+						def data = 0
+						echo data					
+						if(data != 0){
+							echo "testing"
+						}
 					}
 				}
             }
