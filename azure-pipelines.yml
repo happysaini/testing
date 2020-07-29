@@ -9,6 +9,14 @@ trigger:
 pool:
   vmImage: 'macOS-10.14'
 
-steps:
-- bash |
-    echo hello
+stages:
+- stage: SetupDependencies
+  displayName: Setup Dependencies
+  jobs:
+  - job: SetupDependenciesJob
+    displayName: Setup Dependencies Job
+    pool:
+      vmImage: $(vmImageName)
+    steps:
+    - bash: |
+        echo "Installing Common  Depndencies"
