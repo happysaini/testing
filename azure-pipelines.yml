@@ -21,3 +21,4 @@ stages:
     steps:
     - bash: |
         echo "Installing Common  Depndencies"
+        lsof -h
