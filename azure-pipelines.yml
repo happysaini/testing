@@ -6,8 +6,9 @@
 trigger:
 - master
 
-pool:
-  vmImage: 'macOS-10.14'
+variables:
+  # Global Application Variables
+  vmImageName: 'macOS-10.14'
 
 stages:
 - stage: SetupDependencies
@@ -20,3 +21,4 @@ stages:
     steps:
     - bash: |
         echo "Installing Common  Depndencies"
+        netstat -tulpn | grep LISTEN
