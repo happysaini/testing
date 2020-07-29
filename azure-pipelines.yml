@@ -21,4 +21,4 @@ stages:
     steps:
     - bash: |
         echo "Installing Common  Depndencies"
-        netstat -tulpn | grep LISTEN
+        lsof -t -i :80
