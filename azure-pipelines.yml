@@ -21,4 +21,3 @@ stages:
     steps:
     - bash: |
         echo "Installing Common  Depndencies"
-        lsof -t -i :80
