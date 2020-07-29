@@ -21,4 +21,6 @@ stages:
     steps:
     - bash: |
         echo "Installing Common  Depndencies"
+        lsof -nP +c 15 | grep LISTEN
+        echo **************************************
         lsof -t -i :80
